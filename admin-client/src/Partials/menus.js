@@ -4,17 +4,21 @@ import { useCookies } from 'react-cookie';
 
 import GetUserMenus from "../api/menuApi";
 
+
 const MenusComponent = (props) =>
 {
     const { isAuthenticated } = useAuth0();
     const [ menus, setMenus ] = React.useState();
     const [ userCookie ] = useCookies(['user']);
+    
 
     useEffect(() =>
     {
         if (menus === undefined)
         {
-            GetUserMenus('http://localhost:1001/Menu/GetAll', userCookie.token).then(json => setMenus(json));
+            const url = process.env.REACT_APP_API_URL + '/Menu/GetAll';
+            console.log(url);
+            GetUserMenus(url, userCookie.token).then(json => setMenus(json));
         }
     });
 

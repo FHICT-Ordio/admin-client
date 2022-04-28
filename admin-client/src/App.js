@@ -12,6 +12,8 @@ import Authorize from './Components/authorize';
 import loading from './Media/Loading.gif'
 
 
+
+
 function App()
 {
     const { isLoading } = useAuth0();
