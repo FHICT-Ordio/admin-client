@@ -24,7 +24,7 @@ function App()
 
 
     if (isLoading) {
-        return <center><img src={loading} class="loadgif"/></center>;
+        return <center><img src={loading} class="loadgif" alt="loading"/></center>;
     }
 
     return (

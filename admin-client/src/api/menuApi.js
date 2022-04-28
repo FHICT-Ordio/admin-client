@@ -1,19 +1,12 @@
-import React, { useEffect } from 'react'
-import { useCookies } from 'react-cookie';
-
-const GetMenus = (path) => 
+const GetUserMenus = async (path, token) => 
 {
-    const [result, setResult] = React.useState();
-    const [ userCookie ] = useCookies(['user']);
+    let res = await 
+    fetch(path, {
+        method: "GET",
+        headers: {"Authorization": `Bearer ${token}`}
+    });
 
-    useEffect(() => {
-        fetch(path + '/Menu/GetAll', {
-            method: "GET",
-            headers: {"Authorization": `Bearer ${userCookie.token}`}
-          }).then(res => res.json()).then(json => setResult(json));
-    })
-    
-    return result;
+    return res.json();
 }
 
-export default GetMenus;
+export default GetUserMenus;
