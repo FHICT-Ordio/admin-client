@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router'
 import { useCookies } from 'react-cookie'
 
 import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
-import Navbar_ from './Partials/navbar'
-import Home_ from './Partials/home'
-import Menus_ from './Partials/menus'
+import NavbarComponent from './Partials/navbar'
+import HomeComponent from './Partials/home'
+import MenusComponent from './Partials/menus'
 import Authorize from './Components/authorize';
 
 import loading from './Media/Loading.gif'
+import HomeComponent from './Partials/home';
+import MenusComponent from './Partials/menus';
 
 
 function App()
@@ -36,11 +38,11 @@ function App()
                 crossorigin="anonymous" 
             />
             <nav>
-                <Navbar_ />
+                <NavbarComponent />
             </nav>
             <Routes>
-                <Route path="" element={<Home_ />} />
-                <Route path="menus" element = { <Menus_ />} />
+                <Route path="" element={<HomeComponent />} />
+                <Route path="menus" element = { <MenusComponent />} />
             </ Routes>   
         </>
     );

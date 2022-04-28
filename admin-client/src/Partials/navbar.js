@@ -9,7 +9,7 @@ import LogoutButton from "../Components/authLogout";
 import logo from '../Media/Logo.png';
 
 
-function Navbar_(props)
+function NavbarComponent(props)
 {
     const { user, isAuthenticated } = useAuth0();
 
@@ -27,7 +27,7 @@ function Navbar_(props)
                     <Nav>
                         { user.picture &&                        
                             <Nav.Item>                            
-                                    <img class="profile-picture" src={ user.picture } alt=""/>                             
+                                    <img class="profile-picture" src={ user.picture } alt="" />                             
                             </Nav.Item>
                         }
                         <Nav.Item ><p class="welcome-text">Welcome {user.name}!</p></Nav.Item>
@@ -54,4 +54,4 @@ function Navbar_(props)
 </NavDropdown>s
 */
 
-export default Navbar_;
+export default NavbarComponent;

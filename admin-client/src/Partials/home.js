@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Home_(props)
+function HomeComponent(props)
 {
     return (
         <div>
@@ -10,7 +10,7 @@ function Home_(props)
     );
 }
   
-export default Home_;
+export default HomeComponent;
 
 /*
 isAuthenticated && (

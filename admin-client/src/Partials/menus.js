@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 
 import GetUserMenus from "../api/menuApi";
 
-const Menus_ = (props) =>
+const MenusComponent = (props) =>
 {
     const { isAuthenticated } = useAuth0();
     const [ menus, setMenus ] = React.useState();
@@ -28,4 +28,4 @@ const Menus_ = (props) =>
     );
 }
 
-export default Menus_;
+export default MenusComponent;
