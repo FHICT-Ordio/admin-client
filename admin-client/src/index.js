@@ -8,7 +8,7 @@ import { CookiesProvider } from "react-cookie";
 import App from './App';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Menus_ from './Partials/menus';
+import MenusComponent from './Partials/menus';
 
 ReactDOM.render(
     <Auth0Provider
@@ -22,7 +22,7 @@ ReactDOM.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} >
-                    <Route path="/menus" element= { <Menus_ />} />
+                    <Route path="/menus" element= { <MenusComponent />} />
                 </Route>
             </Routes>
         </BrowserRouter>
