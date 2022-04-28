@@ -27,7 +27,7 @@ jobs:
       run: npm test
     - name: Build
       working-directory: ./admin-client
-      run: npm run build
+      run: npm run build -- --prod
 
   deployment:
     name: deployment
