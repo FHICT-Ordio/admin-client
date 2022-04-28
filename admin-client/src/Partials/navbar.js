@@ -27,7 +27,7 @@ function Navbar_(props)
                     <Nav>
                         { user.picture &&                        
                             <Nav.Item>                            
-                                    <img class="profile-picture" src={ user.picture } />                             
+                                    <img class="profile-picture" src={ user.picture } alt=""/>                             
                             </Nav.Item>
                         }
                         <Nav.Item ><p class="welcome-text">Welcome {user.name}!</p></Nav.Item>
@@ -51,8 +51,7 @@ function Navbar_(props)
     <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
     <NavDropdown.Divider />
     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-</NavDropdown>
- 
+</NavDropdown>s
 */
 
 export default Navbar_;
