@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router'
-import { useCookies } from 'react-cookie'
 
 import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -11,19 +10,14 @@ import MenusComponent from './Partials/menus'
 import Authorize from './Components/authorize';
 
 import loading from './Media/Loading.gif'
-import HomeComponent from './Partials/home';
-import MenusComponent from './Partials/menus';
 
 
 function App()
 {
     const { isLoading } = useAuth0();
-    const [ userCookies ] = useCookies(['user']);
-
 
     Authorize();
     
-
 
     if (isLoading) {
         return <center><img src={loading} class="loadgif" alt="loading"/></center>;
