@@ -18,7 +18,7 @@ function Authorize(props)
               scope: "read:current_user",
             });
 
-            setCookie('token', accessToken, { maxAge: 86400 });
+            setCookie('token', accessToken, { maxAge: 86400, sameSite: "strict" });
           } catch (e) {
             console.log(e.message);
           }

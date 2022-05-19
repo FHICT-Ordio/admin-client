@@ -9,7 +9,7 @@ const LogoutButton = () => {
     const [ userCookie, removeCookie ] = useCookies(['user']);
 
     return (
-        <Button class="login-button" onClick={() => { logout({ returnTo: window.location.origin }); removeCookie('token'); }} >
+        <Button className="login-button" onClick={() => { logout({ returnTo: window.location.origin }); removeCookie('token'); }} >
             Log Out
         </Button>
     );

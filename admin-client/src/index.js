@@ -9,24 +9,28 @@ import App from './App';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MenusComponent from './Partials/menus';
+import NewMenu from './Partials/menu-new';
 
 ReactDOM.render(
     <Auth0Provider
-    domain="ordio.eu.auth0.com"
-    clientId="sb9tD99oZDPCo8LfSJhvLho67FQIM5yz"
-    redirectUri={window.location.origin}
-    audience="https://ordio.eu.auth0.com/api/v2/"
-    scope="read:current_user update:current_user_metadata"
+        domain="ordio.eu.auth0.com"
+        clientId="sb9tD99oZDPCo8LfSJhvLho67FQIM5yz"
+        redirectUri={window.location.origin}
+        audience="https://ordio.eu.auth0.com/api/v2/"
+        scope="read:current_user update:current_user_metadata"
     >
-    <CookiesProvider>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />} >
-                    <Route path="/menus" element= { <MenusComponent />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    </CookiesProvider>
+        <CookiesProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />} >
+                        <Route path="/menus" element={<MenusComponent />} >
+                            <Route path="/menus/new" element={<NewMenu />} />
+                            <Route path="/menus/edit/:menuId" element={<NewMenu />} />
+                        </Route>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </CookiesProvider>
     </Auth0Provider>,
     document.getElementById('root')
 );

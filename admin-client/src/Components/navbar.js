@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import { useAuth0 } from "@auth0/auth0-react";
 
-import LoginButton from '../Components/authLogin'
-import LogoutButton from "../Components/authLogout";
+import LoginButton from './authLogin'
+import LogoutButton from "./authLogout";
 
 import logo from '../Media/Logo.png';
 
@@ -16,7 +16,7 @@ function NavbarComponent(props)
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="/"><img src={logo} class="logo" alt=""/></Navbar.Brand>
+                <Navbar.Brand href="/"><img src={logo} className="logo" alt=""/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -27,11 +27,11 @@ function NavbarComponent(props)
                     <Nav>
                         { user.picture &&                        
                             <Nav.Item>                            
-                                    <img class="profile-picture" src={ user.picture } alt="" />                             
+                                    <img className="profile-picture" src={ user.picture } alt="" />                             
                             </Nav.Item>
                         }
-                        <Nav.Item ><p class="welcome-text">Welcome {user.name}!</p></Nav.Item>
-                        <Nav.Item class="align"><LogoutButton /></Nav.Item>
+                        <Nav.Item ><p className="welcome-text">Welcome {user.name}!</p></Nav.Item>
+                        <Nav.Item className="align"><LogoutButton /></Nav.Item>
                     </ Nav>
                     :
                     <Nav>
