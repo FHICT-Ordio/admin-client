@@ -14,10 +14,14 @@ export const GetMenu = async (id) =>
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + id, {
         headers: {"Access-Control-Allow-Origin": '*' }
     });
+    if (res.status === 400)
+    {
+        return res.status;
+    }
     return res.json();
 }
 
-export const DeleteMenu = async (token, id) =>
+export const ArchiveMenu = async (token, id) =>
 {
     let res = await
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + id, {

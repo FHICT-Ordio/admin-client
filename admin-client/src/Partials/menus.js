@@ -4,8 +4,7 @@ import { useCookies } from 'react-cookie';
 import { Container, Row, Button } from 'react-bootstrap';
 import { GetUserMenus } from "../api/menuApi";
 
-import MenuEntry from "../Components/menuEntry";
-import { Navigate } from "react-router-dom";
+import MenuEntry from "../Components/menuCard";
 
 const MenusComponent = (props) =>
 {
