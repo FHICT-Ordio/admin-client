@@ -1,0 +1,33 @@
+/* ===== Automatic Styling ===== */
+#development a {
+    color: #71BDBC !important;
+    text-decoration: underline;
+}
+
+#development a:hover {
+    color: #C74747 !important;
+    cursor: pointer;
+}
+
+/* ===== Nav footer ===== */
+.navfooter-button {
+    width: 150px;
+    height: 30px;
+    background-color: #71BDBC;
+    border: #71BDBC;
+    border-radius: 5px;
+    transition: all .1s ease-in-out;
+}
+
+    .navfooter-button:hover {
+        transform: scale(1.1);
+    }
+
+    .navfooter-button span {
+        display: inline-block;
+        vertical-align: bottom;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100px;
+    }

@@ -1,20 +1,23 @@
 import React from 'react';
 import { Routes, Route } from 'react-router'
+import { useAuth0 } from "@auth0/auth0-react";
 
 import './App.css';
-import { useAuth0 } from "@auth0/auth0-react";
+import loading from './Media/Loading.gif'
 
 import NavbarComponent from './Components/navbar'
 import HomeComponent from './Pages/home'
 import MenusComponent from './Pages/menus'
-
-import loading from './Media/Loading.gif'
 import EditMenuComponent from './Pages/menu-edit';
 import NewMenuComponent from './Pages/menu-new';
 import NewCategoryComponent from './Pages/category-new';
 import EditCategoryComponent from './Pages/category-edit';
 import NewItemComponent from './Pages/item-new';
 import EditItemComponent from './Pages/item-edit';
+import DeveloperHomeComponent from './Developer-pages/home';
+import DeveloperGettingStartedComponent from './Developer-pages/getting-started';
+import DeveloperApiComponent from './Developer-pages/api-usage';
+import DeveloperAccessMenuComponent from './Developer-pages/access-menu';
 
 
 
@@ -23,9 +26,6 @@ function App()
 {
     const { isLoading } = useAuth0();
     
-
-    
-
     return (
         <>
             <link
@@ -49,6 +49,10 @@ function App()
                     <Route path="menus/edit/:menuId/categories/:categoryId" element={<EditCategoryComponent />} />
                     <Route path="menus/edit/:menuId/items/new" element={<NewItemComponent />} />
                     <Route path="menus/edit/:menuId/items/:itemId" element={<EditItemComponent />} />
+                    <Route path="development" element={<DeveloperHomeComponent />} />
+                    <Route path="development/getting-started" element={<DeveloperGettingStartedComponent />} />
+                    <Route path="development/api-usage" element={<DeveloperApiComponent />} />
+                    <Route path="development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
                 </ Routes>
                 :
                 <center><img src={loading} class="loadgif" alt="loading"/></center>

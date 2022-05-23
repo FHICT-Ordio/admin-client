@@ -36,3 +36,15 @@
         transform: rotate(360deg);
     }
 }
+
+.theme-blue
+{
+    background-color: #71BDBC !important;
+    border-color: #71BDBC !important;
+}
+
+.theme-red
+{
+    color: #C74747 !important;
+    border-color: #C74747 !important;
+}

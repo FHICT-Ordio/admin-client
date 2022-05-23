@@ -46,8 +46,8 @@ const MenuCard = ({ id, title, description, restaurantName, lastEdited, categori
                 <ListGroupItem>Items: {items.length}</ListGroupItem>                                
             </ListGroup>
             <Card.Body>
-                <center><Button variant="primary" href={"menus/edit/" + id} style={{width: '100px', marginBottom: '10px'}}>Edit</Button></center>
-                <center><Button variant="danger" disabled={isLoading} onClick={onArchiveClick} style={{width: '100px', marginBottom: '10px'}}>Archive</Button></center>
+                <center><Button variant="primary" className="theme-blue" href={"menus/edit/" + id} style={{width: '100px', marginBottom: '10px'}}>Edit</Button></center>
+                <center><Button variant="danger" className="theme-red" disabled={isLoading} onClick={onArchiveClick} style={{width: '100px', marginBottom: '10px'}}>Archive</Button></center>
                 <center>Last edited: <i>{lastEdited.substring(0, 10)}</i></center>
             </Card.Body>
         </Card>

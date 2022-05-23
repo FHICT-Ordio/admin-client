@@ -14,6 +14,10 @@ import NewCategoryComponent from './Pages/category-new';
 import EditCategoryComponent from './Pages/category-edit';
 import NewItemComponent from './Pages/item-new';
 import EditItemComponent from './Pages/item-edit';
+import DeveloperHomeComponent from './Developer-pages/home';
+import DeveloperGettingStartedComponent from './Developer-pages/getting-started';
+import DeveloperApiComponent from './Developer-pages/api-usage';
+import DeveloperAccessMenuComponent from './Developer-pages/access-menu';
 
 
 ReactDOM.render(
@@ -36,6 +40,11 @@ ReactDOM.render(
                                 <Route path="/menus/edit/:menuId/items/new" element={<NewItemComponent />} />
                                 <Route path="/menus/edit/:menuId/items/:itemId" element={<EditItemComponent />} />                                
                             </Route>                            
+                        </Route>
+                        <Route path="/development" element={<DeveloperHomeComponent />}>
+                            <Route path="/development/getting-started" element={<DeveloperGettingStartedComponent />} />
+                            <Route path="/development/api-usage" element={<DeveloperApiComponent />} />
+                            <Route path="/development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
                         </Route>
                     </Route>
                 </Routes>

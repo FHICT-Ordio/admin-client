@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react';
-import { useCookies } from 'react-cookie';
 import { Container, Row, Button } from 'react-bootstrap';
 import { GetUserMenus } from "../api/menuApi";
 
