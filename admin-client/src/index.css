@@ -43,9 +43,22 @@ code {
     margin-top: auto;
 }
 
-.menucard
+.card
 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+}
+
+.card-text
+{
+    height: 60px;
+    text-overflow: ellipsis;
+}
+
+.default-offset
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
 }

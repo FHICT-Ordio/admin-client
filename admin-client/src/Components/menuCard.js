@@ -1,38 +1,43 @@
-import React, { useEffect } from "react";
-import { useCookies } from 'react-cookie';
+import React from "react";
 import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 import { ArchiveMenu } from '../api/menuApi'
 
 import PropTypes from 'prop-types';
-import { useHref } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
 const MenuCard = ({ id, title, description, restaurantName, lastEdited, categories, items }) => {
 
     const [ isLoading, setLoading ] = React.useState(false);
-    const [ userCookie ] = useCookies(['user']);
+    const { getAccessTokenSilently } = useAuth0();
     
-    /*
-    useEffect(() => {
-        
-    });
-    */
-
     const onArchiveClick = async () => {
         setLoading(true);
-        await ArchiveMenu(userCookie.token, id)
+
+        let accessToken;
+        try {
+            const domain = "ordio.eu.auth0.com";
+            accessToken = await getAccessTokenSilently({
+                audience: `https://${domain}/api/v2/`,
+                scope: "read:current_user",
+            });
+        } catch (e) {
+            console.log(e.message);
+        }
+
+        await ArchiveMenu(accessToken, id)
         setLoading(false);
         
         window.location.reload();
     }
 
     return (
-        <Card className="menucard" style={{ width: '18rem' }} onDoubleClick={() => {window.location.href = window.location.origin + "/menus/edit/" + id;}}>
+        <Card className="card" style={{ width: '18rem' }} onDoubleClick={() => {window.location.href = window.location.origin + "/menus/edit/" + id;}}>
             <Card.Body>
                 <Card.Title style={{ textOverflow: 'ellipsis' }} >{title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted" style={{ textOverflow: 'ellipsis' }} >{restaurantName}</Card.Subtitle>
-                <Card.Text style={{height: '60px', textOverflow: 'ellipsis' }}>
+                <Card.Text className="card-text">
                     {description}
                 </Card.Text>
             </Card.Body>

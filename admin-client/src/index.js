@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { CookiesProvider } from "react-cookie";
-
-import App from './App';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import MenusComponent from './Partials/menus';
-import NewMenu from './Partials/menu-new';
+
+import './index.css';
+import App from './App';
+import MenusComponent from './Pages/menus';
+import EditMenuComponent from './Pages/menu-edit';
+import NewMenuComponent from './Pages/menu-new';
+import NewCategoryComponent from './Pages/category-new';
+import EditCategoryComponent from './Pages/category-edit';
+import NewItemComponent from './Pages/item-new';
+import EditItemComponent from './Pages/item-edit';
+
 
 ReactDOM.render(
     <Auth0Provider
@@ -24,8 +29,13 @@ ReactDOM.render(
                 <Routes>
                     <Route path="/" element={<App />} >
                         <Route path="/menus" element={<MenusComponent />} >
-                            <Route path="/menus/new" element={<NewMenu />} />
-                            <Route path="/menus/edit/:menuId" element={<NewMenu />} />
+                            <Route path="/menus/new" element={<NewMenuComponent />} />
+                            <Route path="/menus/edit/:menuId" element={<EditMenuComponent />} >
+                                <Route path="/menus/edit/:menuId/categories/new" element={<NewCategoryComponent />} />
+                                <Route path="/menus/edit/:menuId/categories/:categoryId" element={<EditCategoryComponent />} />
+                                <Route path="/menus/edit/:menuId/items/new" element={<NewItemComponent />} />
+                                <Route path="/menus/edit/:menuId/items/:itemId" element={<EditItemComponent />} />                                
+                            </Route>                            
                         </Route>
                     </Route>
                 </Routes>

@@ -8,20 +8,29 @@ import MenuEntry from "../Components/menuCard";
 
 const MenusComponent = (props) =>
 {
-    const { isAuthenticated, isLoading } = useAuth0();
+    const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
     const [ menus, setMenus ] = React.useState();
-    const [ userCookie ] = useCookies(['user']);
 
-    useEffect(() =>
+    useEffect(async () =>
     {
         if (menus === undefined)
-        {            
-            GetUserMenus(userCookie.token).then(json => setMenus(json));
+        {
+                let accessToken;
+            try {
+                const domain = "ordio.eu.auth0.com";
+                accessToken = await getAccessTokenSilently({
+                    audience: `https://${domain}/api/v2/`,
+                    scope: "read:current_user",
+                });
+            } catch (e) {
+                console.log(e.message);
+            }
+            GetUserMenus(accessToken).then(json => setMenus(json));
         }
 
         if (!isLoading && !isAuthenticated)
         {
-            
+            window.location.href = window.location.origin
         }
     });
 
@@ -36,7 +45,7 @@ const MenusComponent = (props) =>
             <br /><br />
             {
                 menus !== undefined &&
-                <div>
+                <div>                    
                     <Container>
                         <Row>
                         {

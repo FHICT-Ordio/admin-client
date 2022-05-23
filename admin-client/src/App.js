@@ -5,13 +5,16 @@ import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
 
 import NavbarComponent from './Components/navbar'
-import HomeComponent from './Partials/home'
-import MenusComponent from './Partials/menus'
-import Authorize from './Components/authorize';
+import HomeComponent from './Pages/home'
+import MenusComponent from './Pages/menus'
 
 import loading from './Media/Loading.gif'
-import NewMenu from './Partials/menu-new';
-import EditMenu from './Partials/menu-edit';
+import EditMenuComponent from './Pages/menu-edit';
+import NewMenuComponent from './Pages/menu-new';
+import NewCategoryComponent from './Pages/category-new';
+import EditCategoryComponent from './Pages/category-edit';
+import NewItemComponent from './Pages/item-new';
+import EditItemComponent from './Pages/item-edit';
 
 
 
@@ -19,13 +22,9 @@ import EditMenu from './Partials/menu-edit';
 function App()
 {
     const { isLoading } = useAuth0();
-
-    Authorize();
     
 
-    if (isLoading) {
-        return <center><img src={loading} class="loadgif" alt="loading"/></center>;
-    }
+    
 
     return (
         <>
@@ -38,12 +37,22 @@ function App()
             <nav>
                 <NavbarComponent />
             </nav>
-            <Routes>
-                <Route path="" element={<HomeComponent />} />
-                <Route exact path="menus" element={<MenusComponent />} />
-                <Route path="menus/new" element={<NewMenu />} />
-                <Route path="menus/edit/:menuId"  element={<EditMenu />} />
-            </ Routes>   
+
+            {
+                !isLoading ?
+                <Routes>
+                    <Route path="" element={<HomeComponent />} />
+                    <Route path="menus" element={<MenusComponent />} />
+                    <Route path="menus/new" element={<NewMenuComponent />} />
+                    <Route path="menus/edit/:menuId" element={<EditMenuComponent />} />
+                    <Route path="menus/edit/:menuId/categories/new" element={<NewCategoryComponent />} />
+                    <Route path="menus/edit/:menuId/categories/:categoryId" element={<EditCategoryComponent />} />
+                    <Route path="menus/edit/:menuId/items/new" element={<NewItemComponent />} />
+                    <Route path="menus/edit/:menuId/items/:itemId" element={<EditItemComponent />} />
+                </ Routes>
+                :
+                <center><img src={loading} class="loadgif" alt="loading"/></center>
+            }
         </>
     );
 }
