@@ -18,7 +18,8 @@ const NavigationFooter = ({ prevLink, prevText, nextLink, nextText }) => {
                 <span style={{float: "right"}}>
                     <button className="navfooter-button" onClick={() => { window.location.href = nextLink }}><span>{nextText === undefined ? "Next" : nextText }</span> &gt;</button>
                 </span>  
-            }       
+            } 
+            <br /><br /><br />     
         </div>
     )
 }

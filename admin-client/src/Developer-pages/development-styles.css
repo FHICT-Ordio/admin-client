@@ -1,11 +1,11 @@
 /* ===== Automatic Styling ===== */
 #development a {
-    color: #71BDBC !important;
+    color: var(--theme-blue) !important;
     text-decoration: underline;
 }
 
 #development a:hover {
-    color: #C74747 !important;
+    color: var(--theme-red) !important;
     cursor: pointer;
 }
 
@@ -13,8 +13,8 @@
 .navfooter-button {
     width: 150px;
     height: 30px;
-    background-color: #71BDBC;
-    border: #71BDBC;
+    background-color: var(--theme-blue);
+    border: var(--theme-blue);
     border-radius: 5px;
     transition: all .1s ease-in-out;
 }
@@ -31,3 +31,13 @@
         text-overflow: ellipsis;
         width: 100px;
     }
+
+/* ===== General ===== */
+span.endpoint {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.collapsible-trigger:hover {
+    cursor: pointer !important;
+}

@@ -14,11 +14,8 @@ export const GetMenu = async (id) =>
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + id, {
         headers: {"Access-Control-Allow-Origin": '*' }
     });
-    if (res.status === 400)
-    {
-        return res.status;
-    }
-    return res.json();
+
+    return ((res === 200) ? res.json() : res);
 }
 
 export const ArchiveMenu = async (token, id) =>

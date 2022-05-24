@@ -33,11 +33,14 @@ function NavbarComponent(props)
                             <> 
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="/development/getting-started">Getting started</NavDropdown.Item>
-                                <NavDropdown.Item href="/development/api-usage">API usage</NavDropdown.Item>
-                                <NavDropdown.Item href="/development/accessing-menus">Accessing menus</NavDropdown.Item>
+                                <NavDropdown title="API usage" drop="end" id="api-usage-dropdown">
+                                    <NavDropdown.Item href="/development/api-usage">Usage</NavDropdown.Item>
+                                    <NavDropdown.Item href="/development/accessing-menus">Accessing menus</NavDropdown.Item>
+                                </NavDropdown>
                                 <NavDropdown.Divider />
                                 <NavDropdown title="Resources" drop="end" id="resources-dropdown">
                                     <NavDropdown.Item href="https://fhict-ordio.github.io/general/" target="_blank">Swagger portal</NavDropdown.Item>
+                                    <NavDropdown.Item href="https://github.com/FHICT-Ordio" target="_blank">GitHub</NavDropdown.Item>
                                 </NavDropdown>                                                                    
                             </>
                         }
