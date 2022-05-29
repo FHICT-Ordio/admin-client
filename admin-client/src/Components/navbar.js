@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Navbar, Nav, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button, NavDropdown, Dropdown } from 'react-bootstrap';
 import { useAuth0 } from "@auth0/auth0-react";
 
 import LoginButton from './authLogin'
@@ -21,7 +21,30 @@ function NavbarComponent(props)
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
-                    { isAuthenticated && (<Nav.Link href="/menus">Menus</Nav.Link>) }
+                    {
+                        isAuthenticated && 
+                        <Nav.Link href="/menus">Menus</Nav.Link>
+                    }
+                    
+                    <NavDropdown title="Development" id="development-dropdown">
+                        <NavDropdown.Item href="/development">Home</NavDropdown.Item>
+                        {
+                            isAuthenticated &&
+                            <> 
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="/development/getting-started">Getting started</NavDropdown.Item>
+                                <NavDropdown title="API usage" drop="end" id="api-usage-dropdown">
+                                    <NavDropdown.Item href="/development/api-usage">Usage</NavDropdown.Item>
+                                    <NavDropdown.Item href="/development/accessing-menus">Accessing menus</NavDropdown.Item>
+                                </NavDropdown>
+                                <NavDropdown.Divider />
+                                <NavDropdown title="Resources" drop="end" id="resources-dropdown">
+                                    <NavDropdown.Item href="https://fhict-ordio.github.io/general/" target="_blank">Swagger portal</NavDropdown.Item>
+                                    <NavDropdown.Item href="https://github.com/FHICT-Ordio" target="_blank">GitHub</NavDropdown.Item>
+                                </NavDropdown>                                                                    
+                            </>
+                        }
+                    </NavDropdown>
                 </Nav>                
                 { isAuthenticated ?
                     <Nav>
