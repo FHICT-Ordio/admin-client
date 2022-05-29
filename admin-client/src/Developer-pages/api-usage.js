@@ -54,7 +54,7 @@ const DeveloperApiComponent = (props) =>
                                 
                             <TabPanel id="js">
                                 <CopyBlock 
-                                    text= {"export const Get = async () =>\n{\n    let res = await\n        fetch(\"https://86.92.40.132:1000/\" + /* API Endpoint */, {\n            method: \"GET\",\n            headers: { \"Content-Type\": \"application/json\", \"Access-Control-Allow-Origin\": '*' }\n        });\n    return ((res === 200) ? res.json() : res);\n}"}
+                                    text= {"export const Get = async () =>\n{\n    let res = await\n        fetch(\"https://86.92.40.132:1000/\" + /* API Endpoint */, {\n            method: \"GET\",\n            headers: { \"Content-Type\": \"application/json\", \"Access-Control-Allow-Origin\": '*' }\n        });\n    return ((res.status === 200) ? res.json() : res);\n}"}
                                     language={"js"}
                                     showLineNumbers={true}
                                     theme={theme}

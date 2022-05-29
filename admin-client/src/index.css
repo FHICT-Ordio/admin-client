@@ -60,3 +60,7 @@ code {
     margin-right: auto;
     width: 50%
 }
+
+.token-display {
+    word-wrap: break-word;
+}

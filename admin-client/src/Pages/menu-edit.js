@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { UpdateMenu, GetMenu } from "../api/menuApi";
+import { UpdateMenu, GetMenu, GenerateToken } from "../api/menuApi";
 import { useAuth0 } from '@auth0/auth0-react';
 import { sha256 } from 'js-sha256'
 import CategoryCard from "../Components/categoryCard";
@@ -12,21 +12,48 @@ import ItemCard from "../Components/itemCard";
 
 const EditMenuComponent = (props) => {
     const [ menu, setMenu ] = React.useState();
+    const [ publicToken, setPublicToken ] = React.useState();
+    const [ hideToken, setHideToken ] = React.useState(true);
+
     const [ newTitle, setNewTitle ] = React.useState();
     const [ newRestaurantName, setNewRestaurantName ] = React.useState();
     const [ newDescription, setNewDescription ] = React.useState();
-    const [showAlert, setShowAlert] = useState(false);
-    const [alertType, setAlertType] = useState();
-    const [alertHeading, setAlertHeading] = useState();
-    const [alertMessage, setAlertMessage] = useState();
+
+    const [ showAlert, setShowAlert] = useState(false);
+    const [ alertType, setAlertType] = useState();
+    const [ alertHeading, setAlertHeading] = useState();
+    const [ alertMessage, setAlertMessage] = useState();
+
+    
 
     const { menuId } = useParams();
     const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
 
     useEffect(async() => {
-        if (menu === undefined)
+        if (menu === undefined || publicToken === undefined)
         {
-            GetMenu(menuId).then(res => { setMenu(res) });       
+            let accessToken;
+            try 
+            {
+                const domain = "ordio.eu.auth0.com";
+                accessToken = await getAccessTokenSilently({
+                    audience: `https://${domain}/api/v2/`,
+                    scope: "read:current_user",
+                });
+            } catch (e) {
+                console.log(e.message);
+                return;
+            }
+
+            if (menu === undefined)
+            {
+                GetMenu(accessToken, menuId).then(res => { setMenu(res) });   
+            }
+            
+            if (publicToken === undefined)
+            {
+                GenerateToken(accessToken, menuId).then(res => { setPublicToken(res) })
+            }
         }
 
         if (!isLoading && menu !== undefined)
@@ -85,7 +112,7 @@ const EditMenuComponent = (props) => {
     }
 
     return (
-        menu !== undefined && !isLoading &&
+        menu !== undefined && publicToken !== undefined && !isLoading &&
         <div>
             <div>
                 <br />
@@ -128,6 +155,24 @@ const EditMenuComponent = (props) => {
                     </Form.Group>
                 </Form>
             </div>
+
+            <br /><hr className="default-offset"/>
+            <div className="default-offset">
+                <center>
+                    <h1>Public menu token</h1>
+                    <br />
+                    
+                </center>
+                <p>
+                    This public token will give you and others the ability to externally this menu. Be careful! This token can be used to aquire all data about a menu without further verification! Make sure you handle this token carefully and do not give this token to anyone thats not supposed to have it!
+                </p>
+                <br />
+                <Button onClick={() => { setHideToken(false) }}>Reveal token</Button>
+                <div className="token-display" hidden={hideToken}>
+                    {publicToken}
+                    </div>
+            </div>
+
             <br /><hr className="default-offset"/>
             <div>
                 <center>
