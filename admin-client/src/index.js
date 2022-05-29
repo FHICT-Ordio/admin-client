@@ -18,7 +18,7 @@ import DeveloperHomeComponent from './Developer-pages/home';
 import DeveloperGettingStartedComponent from './Developer-pages/getting-started';
 import DeveloperApiComponent from './Developer-pages/api-usage';
 import DeveloperAccessMenuComponent from './Developer-pages/access-menu';
-
+import DeveloperMenuItemsComponent from './Developer-pages/menu-items';
 
 ReactDOM.render(
     <Auth0Provider
@@ -46,6 +46,7 @@ ReactDOM.render(
                             <Route path="*/development/getting-started" element={<DeveloperGettingStartedComponent />} />
                             <Route path="*/development/api-usage" element={<DeveloperApiComponent />} />
                             <Route path="*/development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
+                            <Route path="*/development/menu-items" element={<DeveloperMenuItemsComponent />} />
                         </Route>
                     </Route>
                 </Routes>

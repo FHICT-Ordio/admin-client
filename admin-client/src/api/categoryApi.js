@@ -1,8 +1,11 @@
-export const GetCategory = async (menuId, id) =>
+export const GetCategory = async (token, menuId, id) =>
 {
     let res = await
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + menuId + "/category/" + id, {
-        headers: {"Access-Control-Allow-Origin": '*' }
+        headers: {
+                    "Authorization": `Bearer ${token}`, 
+                    "Access-Control-Allow-Origin": '*' 
+                }
     });
     if (res.status === 400)
     {
@@ -16,7 +19,10 @@ export const DeleteCategory = async (token, menuId, id) =>
     let res = await
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + menuId + "/category/" + id, {
         method: "DELETE",
-        headers: {"Authorization": `Bearer ${token}`, "Access-Control-Allow-Origin": '*' }
+        headers: {
+                    "Authorization": `Bearer ${token}`, 
+                    "Access-Control-Allow-Origin": '*' 
+                }
     });
     return res.status;
 }

@@ -36,6 +36,7 @@ function NavbarComponent(props)
                                 <NavDropdown title="API usage" drop="end" id="api-usage-dropdown">
                                     <NavDropdown.Item href="/development/api-usage">Usage</NavDropdown.Item>
                                     <NavDropdown.Item href="/development/accessing-menus">Accessing menus</NavDropdown.Item>
+                                    <NavDropdown.Item href="/development/menu-items">Menu items</NavDropdown.Item>
                                 </NavDropdown>
                                 <NavDropdown.Divider />
                                 <NavDropdown title="Resources" drop="end" id="resources-dropdown">
