@@ -8,17 +8,14 @@ export const GetUserMenus = async (token) =>
     return res.json();
 }
 
-export const GetMenu = async (id) =>
+export const GetMenu = async (token, id) =>
 {
     let res = await
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + id, {
-        headers: {"Access-Control-Allow-Origin": '*' }
+        headers: {"Authorization": `Bearer ${token}`, "Access-Control-Allow-Origin": '*' }
     });
-    if (res.status === 400)
-    {
-        return res.status;
-    }
-    return res.json();
+
+    return ((res.status === 200) ? res.json() : res);
 }
 
 export const ArchiveMenu = async (token, id) =>
@@ -58,4 +55,17 @@ export const CreateMenu = async (token, _title, _restaurantName, _description) =
         body: JSON.stringify({ title: _title, restaurantName: _restaurantName, description: _description })
     });
     return res.status;
+}
+
+export const GenerateToken = async (token, menuId) => {
+    let res = await
+    fetch(process.env.REACT_APP_API_URL + '/Public/Token/' + menuId, {
+        method: "GET",
+        headers:{
+                    "Authorization": `Bearer ${token}`, 
+                    "Access-Control-Allow-Origin": '*', 
+                    "Content-Type": "application/json"
+                }
+    });
+    return res.text();
 }

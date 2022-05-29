@@ -44,8 +44,8 @@ const CategoryCard = ({ id, menuId, name, description, items }) => {
                 <ListGroupItem>Items: {items.length}</ListGroupItem>                                
             </ListGroup>
             <Card.Body>
-                <center><Button variant="primary" href={ window.location.href + "/categories/" + id} style={{width: '100px', marginBottom: '10px'}}>Edit</Button></center>
-                <center><Button variant="danger" disabled={isLoading} onClick={onArchiveClick} style={{width: '100px', marginBottom: '10px'}}>Delete</Button></center>
+                <center><Button variant="primary" className="theme-blue" href={ window.location.href + "/categories/" + id} style={{width: '100px', marginBottom: '10px'}}>Edit</Button></center>
+                <center><Button variant="danger" className="theme-red" disabled={isLoading} onClick={onArchiveClick} style={{width: '100px', marginBottom: '10px'}}>Delete</Button></center>
             </Card.Body>
         </Card>
     )
