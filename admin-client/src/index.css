@@ -54,6 +54,12 @@ code {
     text-overflow: ellipsis;
 }
 
+.card-button
+{
+    width: 100px;
+    margin-bottom: 10px;
+}
+
 .default-offset
 {
     margin-left: auto;

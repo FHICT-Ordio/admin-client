@@ -37,8 +37,11 @@ const DeveloperHomeComponent = (props) =>
                         </div>
                 }
             </div>
-
-            <NavigationFooter nextLink={"/development/getting-started"} nextText="Getting started with Ordio API" />
+            
+            { isAuthenticated &&
+            (
+                <NavigationFooter nextLink={"/development/getting-started"} nextText="Getting started with Ordio API" />
+            )}
         </div>
     );
 }

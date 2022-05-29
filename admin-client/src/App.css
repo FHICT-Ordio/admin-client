@@ -50,6 +50,6 @@
 
 .theme-red
 {
-    color: var(--theme-red) !important;
+    background-color: var(--theme-red) !important;
     border-color: var(--theme-red) !important;
 }
