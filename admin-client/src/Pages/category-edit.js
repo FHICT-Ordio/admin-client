@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { UpdateMenu, GetMenu } from "../api/menuApi";
+import { GetMenu } from "../api/menuApi";
 import { useAuth0 } from '@auth0/auth0-react';
 import { sha256 } from 'js-sha256'
 
@@ -25,14 +25,29 @@ const EditCategoryComponent = (props) => {
     const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
 
     useEffect(async() => {
-        if (menu === undefined)
+        if (menu === undefined || category === undefined) 
         {
-            GetMenu(menuId).then(res => { setMenu(res) });       
-        }
+            let accessToken;
+            try {
+                const domain = "ordio.eu.auth0.com";
+                accessToken = await getAccessTokenSilently({
+                    audience: `https://${domain}/api/v2/`,
+                    scope: "read:current_user",
+                });
+            } catch (e) {
+                console.log(e.message);
+                return;
+            }
 
-        if (category === undefined)
-        {
-            GetCategory(menuId, categoryId).then(res => { setCategory(res) });
+            if (menu === undefined)
+            {
+                GetMenu(accessToken, menuId).then(res => { setMenu(res) });       
+            }
+
+            if (category === undefined)
+            {
+                GetCategory(accessToken, menuId, categoryId).then(res => { setCategory(res) });
+            }
         }
 
         if (!isLoading && (menu !== undefined)) 

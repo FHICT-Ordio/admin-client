@@ -18,6 +18,7 @@ import DeveloperHomeComponent from './Developer-pages/home';
 import DeveloperGettingStartedComponent from './Developer-pages/getting-started';
 import DeveloperApiComponent from './Developer-pages/api-usage';
 import DeveloperAccessMenuComponent from './Developer-pages/access-menu';
+import DeveloperMenuItemsComponent from './Developer-pages/menu-items';
 
 
 
@@ -46,7 +47,7 @@ function App()
             {
                 !isLoading ?
                 <Routes>
-                    <Route path="*" element={<HomeComponent />} />
+                    <Route path="" element={<HomeComponent />} />
                     <Route path="menus" element={<MenusComponent />} />
                     <Route path="menus/new" element={<NewMenuComponent />} />
                     <Route path="menus/edit/:menuId" element={<EditMenuComponent />} />
@@ -58,6 +59,7 @@ function App()
                     <Route path="development/getting-started" element={<DeveloperGettingStartedComponent />} />
                     <Route path="development/api-usage" element={<DeveloperApiComponent />} />
                     <Route path="development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
+                    <Route path="development/menu-items" element={<DeveloperMenuItemsComponent />} />
                 </ Routes>
                 :
                 <center><img src={loading} className="loadgif" alt="loading"/></center>

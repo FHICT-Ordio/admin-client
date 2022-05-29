@@ -28,14 +28,29 @@ const EditItemComponent = (props) => {
     const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
 
     useEffect(async () => {
-        if (menu === undefined)
+        if (menu === undefined || item === undefined) 
         {
-            GetMenu(menuId).then(res => { setMenu(res) });       
-        }
+            let accessToken;
+            try {
+                const domain = "ordio.eu.auth0.com";
+                accessToken = await getAccessTokenSilently({
+                    audience: `https://${domain}/api/v2/`,
+                    scope: "read:current_user",
+                });
+            } catch (e) {
+                console.log(e.message);
+                return;
+            }
 
-        if (item === undefined)
-        {
-            GetItem(menuId, itemId).then(res => { setItem(res) });
+            if (menu === undefined)
+            {
+                GetMenu(accessToken, menuId).then(res => { setMenu(res) });       
+            }
+
+            if (item === undefined)
+            {
+                GetItem(accessToken, menuId, itemId).then(res => { setItem(res) });
+            }
         }
 
         if (!isLoading && (menu !== undefined)) 

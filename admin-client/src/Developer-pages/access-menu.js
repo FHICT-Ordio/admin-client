@@ -76,7 +76,7 @@ const DeveloperAccessMenuComponent = (props) =>
                                 
                             <TabPanel id="js">
                                 <CopyBlock 
-                                    text= {"export const GetMenu = async (token) =>\n{\n    let res = await\n        fetch(\"https://86.92.40.132:1000/Public/Menu?token=\" + token, {\n            method: \"GET\",\n            headers: { \"Content-Type\": \"application/json\", \"Access-Control-Allow-Origin\": '*' }\n        });\n    return ((res.status === 200) ? res.json() : res);\n}"}
+                                    text= {"export const GetMenu = async (token) =>\n{\n    let res = await\n        fetch(\"https://robinvanhoof.tech:1000/Public/GetMenu?token=\" + token, {\n            method: \"GET\",\n            headers: { \"Content-Type\": \"application/json\", \"Access-Control-Allow-Origin\": '*' }\n        });\n    return ((res.status === 200) ? res.json() : res);\n}"}
                                     language={"js"}
                                     showLineNumbers={true}
                                     theme={theme}
@@ -85,7 +85,7 @@ const DeveloperAccessMenuComponent = (props) =>
                             </TabPanel>
                             <TabPanel id="csharp">
                                 <CopyBlock 
-                                    text={"using System.Net.Http.Headers;\n\npublic static HttpResponseMessage GetMenu(string token)\n{\n    using (var client = new HttpClient())\n    {\n        client.BaseAddress = new Uri(\"https://86.92.40.132:1000\");\n        client.DefaultRequestHeaders.Accept.Clear();\n        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(\"application/json\"));\n        client.DefaultRequestHeaders.Add(\"Access-Control-Allow-Origin\", \"*\");\n\n        try {\n            return await client.GetAsync(\"/Public/Menu?token=\" + token);\n        } catch (Exception ex)\n        {\n            Console.WriteLine(ex);\n            return null;\n        }\n    }\n}"}
+                                    text={"using System.Net.Http.Headers;\n\npublic static HttpResponseMessage GetMenu(string token)\n{\n    using (var client = new HttpClient())\n    {\n        client.BaseAddress = new Uri(\"https://robinvanhoof.tech:1000\");\n        client.DefaultRequestHeaders.Accept.Clear();\n        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(\"application/json\"));\n        client.DefaultRequestHeaders.Add(\"Access-Control-Allow-Origin\", \"*\");\n\n        try {\n            return await client.GetAsync(\"/Public/GetMenu?token=\" + token);\n        } catch (Exception ex)\n        {\n            Console.WriteLine(ex);\n            return null;\n        }\n    }\n}"}
                                     language={"cpp"}
                                     showLineNumbers={true}
                                     theme={theme}
@@ -97,7 +97,7 @@ const DeveloperAccessMenuComponent = (props) =>
                 </div>
             </div>
 
-            <NavigationFooter prevLink={"/development/api-usage"} prevText={"API usage"} />
+            <NavigationFooter prevLink={"/development/api-usage"} prevText={"API usage"} nextLink={"/development/menu-items"} nextText={"Menu items"} />
         </div>
     );
 }
