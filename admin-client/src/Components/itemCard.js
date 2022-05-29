@@ -98,8 +98,8 @@ const ItemCard = ({ id, menuId, name, description, price, tags, categories, igno
                 }
             </ListGroup>
             <Card.Body>
-                <center><Button variant="primary" className="theme-blue" href={ window.location.href + "/items/" + id} style={{width: '100px', marginBottom: '10px'}}>Edit</Button></center>
-                <center><Button variant="danger" className="theme-red" disabled={isLoading} onClick={onArchiveClick} style={{width: '100px', marginBottom: '10px'}}>Archive</Button></center>
+                <center><Button variant="primary" className="theme-blue card-button" href={ window.location.href + "/items/" + id} >Edit</Button></center>
+                <center><Button variant="danger" className="theme-red card-button" disabled={isLoading} onClick={onArchiveClick} >Archive</Button></center>
             </Card.Body>
         </Card>
     )
