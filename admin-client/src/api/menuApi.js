@@ -1,6 +1,5 @@
 export const GetUserMenus = async (token) => 
 {
-    console.log(process.env.REACT_APP_API_URL);
     let res = await 
     fetch(process.env.REACT_APP_API_URL + '/Menu/GetAll', {
         method: "GET",
