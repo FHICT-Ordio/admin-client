@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './development-styles.css'
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -8,7 +8,14 @@ import NavigationFooter from "./Components/NavigationFooter";
 
 const DeveloperGettingStartedComponent = (props) =>
 {
-    const { user, isAuthenticated } = useAuth0();
+    const { isLoading, isAuthenticated } = useAuth0();
+
+    useEffect(() => {
+        if (!isLoading && !isAuthenticated)
+        {
+            window.location.href = window.location.origin
+        }
+    })
 
     return (
         <div id="development">

@@ -18,6 +18,7 @@ import DeveloperHomeComponent from './Developer-pages/home';
 import DeveloperGettingStartedComponent from './Developer-pages/getting-started';
 import DeveloperApiComponent from './Developer-pages/api-usage';
 import DeveloperAccessMenuComponent from './Developer-pages/access-menu';
+import DeveloperMenuItemsComponent from './Developer-pages/menu-items';
 
 
 
@@ -32,11 +33,11 @@ function App()
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
                 integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-                crossorigin="anonymous" 
+                crossOrigin="anonymous" 
             />
 
             <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
             <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" /> 
 
             <nav>
@@ -58,9 +59,10 @@ function App()
                     <Route path="development/getting-started" element={<DeveloperGettingStartedComponent />} />
                     <Route path="development/api-usage" element={<DeveloperApiComponent />} />
                     <Route path="development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
+                    <Route path="development/menu-items" element={<DeveloperMenuItemsComponent />} />
                 </ Routes>
                 :
-                <center><img src={loading} class="loadgif" alt="loading"/></center>
+                <center><img src={loading} className="loadgif" alt="loading"/></center>
             }
         </>
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './development-styles.css'
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,7 +12,14 @@ import { CopyBlock, vs2015 as theme } from "react-code-blocks";
 
 const DeveloperApiComponent = (props) =>
 {
-    const { user, isAuthenticated } = useAuth0();
+    const { isLoading, isAuthenticated } = useAuth0();
+
+    useEffect(() => {
+        if (!isLoading && !isAuthenticated)
+        {
+            window.location.href = window.location.origin
+        }
+    })
 
     return (
         <div id="development">
@@ -26,7 +33,7 @@ const DeveloperApiComponent = (props) =>
                 <p>
                     First off, the public Ordio API is accessible through the following url: 
                     <br /><br />
-                    <h4 style={{ marginLeft: "25px"}}>https://86.92.40.132:1000</h4>
+                    <h4 style={{ marginLeft: "25px"}}>https://robinvanhoof.tech:1000</h4>
                     <br />
 
                     This is the main host of the API gateway for the Ordio platform. All endpoints can be reached through this host, followed by the endpoint identifiers found in this guide and on the swagger portal.
@@ -54,7 +61,7 @@ const DeveloperApiComponent = (props) =>
                                 
                             <TabPanel id="js">
                                 <CopyBlock 
-                                    text= {"export const Get = async () =>\n{\n    let res = await\n        fetch(\"https://86.92.40.132:1000/\" + /* API Endpoint */, {\n            method: \"GET\",\n            headers: { \"Content-Type\": \"application/json\", \"Access-Control-Allow-Origin\": '*' }\n        });\n    return ((res.status === 200) ? res.json() : res);\n}"}
+                                    text= {"export const Get = async () =>\n{\n    let res = await\n        fetch(\"https://robinvanhoof.tech:1000/\" + /* API Endpoint */, {\n            method: \"GET\",\n            headers: { \"Content-Type\": \"application/json\", \"Access-Control-Allow-Origin\": '*' }\n        });\n    return ((res.status === 200) ? res.json() : res);\n}"}
                                     language={"js"}
                                     showLineNumbers={true}
                                     theme={theme}
@@ -63,7 +70,7 @@ const DeveloperApiComponent = (props) =>
                             </TabPanel>
                             <TabPanel id="csharp">
                                 <CopyBlock 
-                                    text={"using System.Net.Http.Headers;\n\npublic static HttpResponseMessage Get()\n{\n    using (var client = new HttpClient())\n    {\n        client.BaseAddress = new Uri(\"https://86.92.40.132:1000\");\n        client.DefaultRequestHeaders.Accept.Clear();\n        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(\"application/json\"));\n        client.DefaultRequestHeaders.Add(\"Access-Control-Allow-Origin\", \"*\");\n\n        try {\n            return await client.GetAsync(/* API Endpoint */);\n        } catch (Exception ex)\n        {\n            Console.WriteLine(ex);\n            return null;\n        }\n    }\n}"}
+                                    text={"using System.Net.Http.Headers;\n\npublic static HttpResponseMessage Get()\n{\n    using (var client = new HttpClient())\n    {\n        client.BaseAddress = new Uri(\"https://robinvanhoof.tech:1000\");\n        client.DefaultRequestHeaders.Accept.Clear();\n        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(\"application/json\"));\n        client.DefaultRequestHeaders.Add(\"Access-Control-Allow-Origin\", \"*\");\n\n        try {\n            return await client.GetAsync(/* API Endpoint */);\n        } catch (Exception ex)\n        {\n            Console.WriteLine(ex);\n            return null;\n        }\n    }\n}"}
                                     language={"cpp"}
                                     showLineNumbers={true}
                                     theme={theme}

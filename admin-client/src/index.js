@@ -18,7 +18,7 @@ import DeveloperHomeComponent from './Developer-pages/home';
 import DeveloperGettingStartedComponent from './Developer-pages/getting-started';
 import DeveloperApiComponent from './Developer-pages/api-usage';
 import DeveloperAccessMenuComponent from './Developer-pages/access-menu';
-
+import DeveloperMenuItemsComponent from './Developer-pages/menu-items';
 
 ReactDOM.render(
     <Auth0Provider
@@ -27,24 +27,26 @@ ReactDOM.render(
         redirectUri={window.location.origin}
         audience="https://ordio.eu.auth0.com/api/v2/"
         scope="read:current_user update:current_user_metadata"
+        
     >
         <CookiesProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<App />} >
-                        <Route path="/menus" element={<MenusComponent />} >
-                            <Route path="/menus/new" element={<NewMenuComponent />} />
-                            <Route path="/menus/edit/:menuId" element={<EditMenuComponent />} >
-                                <Route path="/menus/edit/:menuId/categories/new" element={<NewCategoryComponent />} />
-                                <Route path="/menus/edit/:menuId/categories/:categoryId" element={<EditCategoryComponent />} />
-                                <Route path="/menus/edit/:menuId/items/new" element={<NewItemComponent />} />
-                                <Route path="/menus/edit/:menuId/items/:itemId" element={<EditItemComponent />} />                                
+                    <Route path="*" element={<App />} >
+                        <Route path="*/menus" element={<MenusComponent />} >
+                            <Route path="*/menus/new" element={<NewMenuComponent />} />
+                            <Route path="*/menus/edit/:menuId" element={<EditMenuComponent />} >
+                                <Route path="*/menus/edit/:menuId/categories/new" element={<NewCategoryComponent />} />
+                                <Route path="*/menus/edit/:menuId/categories/:categoryId" element={<EditCategoryComponent />} />
+                                <Route path="*/menus/edit/:menuId/items/new" element={<NewItemComponent />} />
+                                <Route path="*/menus/edit/:menuId/items/:itemId" element={<EditItemComponent />} />                                
                             </Route>                            
                         </Route>
-                        <Route path="/development" element={<DeveloperHomeComponent />}>
-                            <Route path="/development/getting-started" element={<DeveloperGettingStartedComponent />} />
-                            <Route path="/development/api-usage" element={<DeveloperApiComponent />} />
-                            <Route path="/development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
+                        <Route path="*/development" element={<DeveloperHomeComponent />}>
+                            <Route path="*/development/getting-started" element={<DeveloperGettingStartedComponent />} />
+                            <Route path="*/development/api-usage" element={<DeveloperApiComponent />} />
+                            <Route path="*/development/accessing-menus" element={<DeveloperAccessMenuComponent />} />
+                            <Route path="*/development/menu-items" element={<DeveloperMenuItemsComponent />} />
                         </Route>
                     </Route>
                 </Routes>

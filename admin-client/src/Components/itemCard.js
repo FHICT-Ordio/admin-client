@@ -33,7 +33,7 @@ const ItemCard = ({ id, menuId, name, description, price, tags, categories, igno
     }
 
     return (
-        <Card className="card" style={{ width: '18rem' }} onDoubleClick={() => {window.location.href += "/items/" + id;}}>
+        <Card className="card" style={{ width: '18rem' }} onDoubleClick={() => { window.location.href = window.location.origin + "/menus/edit/" + menuId + "/items/" + id }}>
             <Card.Body>
                 <Card.Title style={{ textOverflow: 'ellipsis' }} >{name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted" style={{ textOverflow: 'ellipsis' }}>
@@ -65,9 +65,9 @@ const ItemCard = ({ id, menuId, name, description, price, tags, categories, igno
                                 <Alert.Heading style={{fontSize: 14}}><center>No categories selected</center></Alert.Heading>
                             </Alert>
                             :
-                            <div>
+                            <span>
                                 {description}
-                            </div>
+                            </span>
                     }
                     
                 </Card.Text>
@@ -98,8 +98,8 @@ const ItemCard = ({ id, menuId, name, description, price, tags, categories, igno
                 }
             </ListGroup>
             <Card.Body>
-                <center><Button variant="primary" className="theme-blue" href={ window.location.href + "/items/" + id} style={{width: '100px', marginBottom: '10px'}}>Edit</Button></center>
-                <center><Button variant="danger" className="theme-red" disabled={isLoading} onClick={onArchiveClick} style={{width: '100px', marginBottom: '10px'}}>Archive</Button></center>
+                <center><Button variant="primary" className="theme-blue card-button" onClick={() => { window.location.href = window.location.origin + "/menus/edit/" + menuId + "/items/" + id }} >Edit</Button></center>
+                <center><Button variant="danger" className="theme-red card-button" disabled={isLoading} onClick={onArchiveClick} >Archive</Button></center>
             </Card.Body>
         </Card>
     )

@@ -1,10 +1,12 @@
 export const GetUserMenus = async (token) => 
 {
-    console.log(token);
     let res = await 
     fetch(process.env.REACT_APP_API_URL + '/Menu/GetAll', {
         method: "GET",
-        headers: {"Authorization": `Bearer ${token}`, "Access-Control-Allow-Origin": '*' }
+        headers: {
+                    "Authorization": `Bearer ${token}`, 
+                    "Access-Control-Allow-Origin": '*' 
+                }
     });
     return res.json();
 }
@@ -13,7 +15,10 @@ export const GetMenu = async (token, id) =>
 {
     let res = await
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + id, {
-        headers: {"Authorization": `Bearer ${token}`, "Access-Control-Allow-Origin": '*' }
+        headers: {
+                    "Authorization": `Bearer ${token}`, 
+                    "Access-Control-Allow-Origin": '*' 
+                }
     });
 
     return ((res.status === 200) ? res.json() : res);
@@ -24,7 +29,10 @@ export const ArchiveMenu = async (token, id) =>
     let res = await
     fetch(process.env.REACT_APP_API_URL + '/Menu/' + id, {
         method: "DELETE",
-        headers: {"Authorization": `Bearer ${token}`, "Access-Control-Allow-Origin": '*' }
+        headers: {
+                    "Authorization": `Bearer ${token}`, 
+                    "Access-Control-Allow-Origin": '*' 
+                }
     });
     return res.status;
 }

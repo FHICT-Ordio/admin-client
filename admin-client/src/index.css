@@ -54,11 +54,18 @@ code {
     text-overflow: ellipsis;
 }
 
+.card-button
+{
+    width: 100px;
+    margin-bottom: 10px;
+}
+
 .default-offset
 {
     margin-left: auto;
     margin-right: auto;
-    width: 50%
+    width: 50%;
+    min-width: 350px;
 }
 
 .token-display {
