@@ -14,7 +14,7 @@ const MenusComponent = (props) =>
     {
         if (menus === undefined)
         {
-                let accessToken;
+            let accessToken;
             try {
                 const domain = "ordio.eu.auth0.com";
                 accessToken = await getAccessTokenSilently({
